@@ -1,25 +1,30 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
 import {BrowserRouter,Routes,Route} from "react-router-dom"
 import Home from '../../React-Ecommerce/src/pages/Home/Home'
 import Navbar from './component/Navbar/Navbar'
+import { CartProvider } from './context/cart-context'
+import Cart from './pages/Cart/Cart'
+import Wishlist from './pages/Wishlist/Wishlist'
+import { WishlistProvider } from './context/wishlist-contex'
 
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
     <>
-      <BrowserRouter>
-        <Navbar/>
-        <Routes>
-          <Route path='/' element = {<Home/>}></Route>
-
-        </Routes>
-      </BrowserRouter>
+      <WishlistProvider>
+        <CartProvider>
+          <BrowserRouter>
+            <Navbar />
+            <Routes>
+              <Route path="/" element={<Home />}></Route>
+              <Route path="/cart" element={<Cart />}></Route>
+              <Route path="/wishlist" element={<Wishlist />}></Route>
+            </Routes>
+          </BrowserRouter>
+        </CartProvider>
+      </WishlistProvider>
     </>
-  )
+  );
 }
 
 export default App
