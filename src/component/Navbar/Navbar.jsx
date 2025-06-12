@@ -1,17 +1,26 @@
 import React from 'react'
+import { useNavigate } from 'react-router';
 
 function Navbar() {
+  
+  const navigate = useNavigate();
   return (
     <>
       <header className="flex bg-green-900 py-4 px-8 text-white">
         <div>
-          <h1 className="text-3xl">Shopping Cart</h1>
+          <h1 className="text-3xl hover:cursor-pointer " onClick={() => navigate('/')}>Shopping Cart</h1>
         </div>
         <nav className="ml-auto flex gap-8 ">
-          <span className="material-icons-outlined hover:cursor-pointer text-3xl">
+          <span
+            className="material-icons-outlined hover:cursor-pointer text-3xl"
+            onClick={() => navigate("/wishlist")}
+          >
             favorite
           </span>
-          <span className="material-icons-outlined hover:cursor-pointer text-3xl">
+          <span
+            className="material-icons-outlined hover:cursor-pointer text-3xl"
+            onClick={() => navigate("/cart")}
+          >
             shopping_cart
           </span>
           <span className="material-icons-outlined hover:cursor-pointer text-3xl">
