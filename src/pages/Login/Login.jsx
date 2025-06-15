@@ -5,10 +5,16 @@ import { userLogin } from "../../api/service";
 function Login() {
   const { loginDispatch, email, password} = useLogin();
   const navigate = useNavigate();
+
+  
   const handleSubmit = async (e) => {
     e.preventDefault();
     const data = await userLogin(email, password);
-    console.log({data})
+    console.log(data);
+    // saving the token on the local storage
+    if(Object.keys(data)?.length>0){
+        localStorage.setItem('token',data.access_token)
+    }
     loginDispatch({
       type: "TOKEN",
       payload: {

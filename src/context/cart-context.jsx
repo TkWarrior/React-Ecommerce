@@ -6,8 +6,9 @@ const CartContext = createContext();
 
 const CartProvider = ({ children }) => {
   const initialState = {
-    cart: [],
+    cart: JSON.parse(localStorage.getItem('cart'))||[],
   };
+
   const [{ cart }, cartDispatch] = useReducer(cartReducer, initialState);
   return (
     <CartContext.Provider value={{ cart, cartDispatch }}>

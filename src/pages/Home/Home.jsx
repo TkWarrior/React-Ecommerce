@@ -36,7 +36,7 @@ function Home() {
   
   return (
     <div>
-      <div className='grid lg:grid-cols-10 md:grid-cols-5 mt-8 gap-4 ml-20'>{categories?.length>0 && categories.map((category) => (<div className='rounded-full bg-green-500 text-center hover:cursor-pointer' onClick={() => onCategoryClick(category.name)}>{category.name}</div>))}</div>
+      <div className='grid lg:grid-cols-10 md:grid-cols-5 sm:grid-cols-3 mt-8 gap-4 ml-20'>{categories?.length>0 && categories.map(category => (<div className='rounded-full bg-green-500 text-center hover:cursor-pointer' key={category.id} onClick={() => onCategoryClick(category.name)}>{category.name}</div>))}</div>
       <main className="grid  md:grid-cols-3 sm:grid-cols:1 pt-8">
         {filterProductByCategories?.length > 0 &&
           filterProductByCategories.map((product) => (
