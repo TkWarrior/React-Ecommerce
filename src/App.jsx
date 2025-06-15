@@ -6,6 +6,7 @@ import { CartProvider } from './context/cart-context'
 import Cart from './pages/Cart/Cart'
 import Wishlist from './pages/Wishlist/Wishlist'
 import { WishlistProvider } from './context/wishlist-contex'
+import Login from './pages/Login/Login'
 
 function App() {
 
@@ -19,6 +20,7 @@ function App() {
               <Route path="/" element={<Home />}></Route>
               <Route path="/cart" element={<Cart />}></Route>
               <Route path="/wishlist" element={<Wishlist />}></Route>
+              <Route path="/auth/login" element={<Login/>}></Route>
             </Routes>
           </BrowserRouter>
         </CartProvider>
