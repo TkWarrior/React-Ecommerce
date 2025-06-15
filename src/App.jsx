@@ -7,6 +7,7 @@ import Cart from './pages/Cart/Cart'
 import Wishlist from './pages/Wishlist/Wishlist'
 import { WishlistProvider } from './context/wishlist-contex'
 import Login from './pages/Login/Login'
+import { LoginProvider } from './context/login-context'
 
 function App() {
 
@@ -15,13 +16,15 @@ function App() {
       <WishlistProvider>
         <CartProvider>
           <BrowserRouter>
-            <Navbar />
-            <Routes>
-              <Route path="/" element={<Home />}></Route>
-              <Route path="/cart" element={<Cart />}></Route>
-              <Route path="/wishlist" element={<Wishlist />}></Route>
-              <Route path="/auth/login" element={<Login/>}></Route>
-            </Routes>
+            <LoginProvider>
+              <Navbar />
+              <Routes>
+                <Route path="/" element={<Home />}></Route>
+                <Route path="/cart" element={<Cart />}></Route>
+                <Route path="/wishlist" element={<Wishlist />}></Route>
+                <Route path="/auth/login" element={<Login />}></Route>
+              </Routes>
+            </LoginProvider>
           </BrowserRouter>
         </CartProvider>
       </WishlistProvider>

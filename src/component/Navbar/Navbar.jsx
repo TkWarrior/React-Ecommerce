@@ -1,9 +1,24 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router";
+import { useLogin } from "../../context/login-context";
 
 function Navbar() {
   const navigate = useNavigate();
+  const {token,loginDispatch} = useLogin();
   const [isAccountDropDownOpen, setIsAccountDropDownOpen] = useState(false);
+  const onLoginClick = () =>{
+      if(token?.access_token){
+          navigate("/auth/login");
+          console.log(token)
+      }
+      else{
+        loginDispatch({
+          type:'LOGOUT'
+        })
+        console.log(token);
+        navigate("/auth/login");
+      }
+  }
   return (
     <>
       <header className="flex bg-green-900 py-4 px-8 text-white">
@@ -37,7 +52,12 @@ function Navbar() {
             </span>
             {isAccountDropDownOpen && (
               <div className="absolute bg-green-400">
-                <button onClick={() => navigate("/auth/login")}>Login</button>
+                <button onClick={onLoginClick}>
+                  {
+                    token?.access_token ? 'LogOut': 'LogIn'
+                  }
+                  
+                  </button>
               </div>
             )}
           </div>
