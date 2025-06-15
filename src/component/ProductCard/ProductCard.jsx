@@ -13,23 +13,29 @@ function ProductCard({ product }) {
   const isProductAvailableInWishlist = findProductInWishlist(wishlist,product.id)
   const onClickCart = (product) =>{
 
-     !isProductAvailableInCart
-      ? cartDispatch({
+     if(!isProductAvailableInCart){
+        localStorage.setItem('cart' , JSON.stringify([ ...cart, product]))
+        cartDispatch({
           type: "ADD_TO_CART",
           payload: { product },
         })
-      : navigate("/cart");   
+     }else{
+        navigate("/cart"); 
+     }
+ 
   }
   
   const onClickHeart = (product) => {
      
-    !isProductAvailableInWishlist
-       ? wishDispatch ({
+    if(!isProductAvailableInWishlist){
+      wishDispatch ({
            type: "ADD_TO_WISHLIST",
            payload: { product },
          })
-       : navigate("/wishlist");
-  
+         localStorage.setItem('wishlist',JSON.stringify([...wishlist,product]))
+    } else{
+        navigate("/wishlist");
+    }
   }
    
   return (
