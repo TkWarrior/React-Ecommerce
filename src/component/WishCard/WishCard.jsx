@@ -10,13 +10,14 @@ function WishCard({ product }) {
             type:'REMOVE_FROM_WISHLIST',
             payload:{id : product.id}
         })
+        localStorage.removeItem('wishlist')
   }
   return (
     <div className="max-w-4xl mx-auto my-4 p-4">
       <div className="card lg:card-side bg-base-100 shadow-xl">
         <figure className="p-4 lg:w-1/3">
           <img
-            src={product.images[0]}
+            src={product.image}
             alt="product"
             className="rounded-xl object-cover max-h-60 w-full"
           />
