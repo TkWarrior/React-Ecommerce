@@ -21,7 +21,7 @@ function Navbar() {
   }
   return (
     <>
-      <header className="flex bg-green-900 py-4 px-8 text-white">
+      <header className="flex sticky top-0 z-50 bg-green-900 py-4 px-8 text-white">
         <div>
           <h1
             className="text-3xl hover:cursor-pointer "

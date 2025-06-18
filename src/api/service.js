@@ -1,10 +1,11 @@
 import axios from "axios";
 
-const BASE_URL = "https://api.escuelajs.co/api/v1/";
+// const BASE_URL = "https://api.escuelajs.co/api/v1/";
+const BASE_URL = "http://localhost:8080/";
 
 export const getAllProduct = async () => {
   try {
-    const response = await axios.get(BASE_URL + "products");
+    const response = await axios.get(BASE_URL + "products/fetch");
     console.log(response.data);
     return response.data;
   } catch (error) {
@@ -15,7 +16,7 @@ export const getAllProduct = async () => {
 
 export const getAllCategories = async () => {
   try {
-    const response = await axios.get(BASE_URL + "categories");
+    const response = await axios.get(BASE_URL + "categories/fetch");
     console.log(response.data);
     return response.data;
   } catch (error) {
