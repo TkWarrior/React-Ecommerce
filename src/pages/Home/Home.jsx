@@ -68,6 +68,7 @@ import { useWishlist } from "../../context/wishlist-contex";
 import { getAllCategories, getAllProduct } from "../../api/service";
 import { getProductByCategory } from "../../utils/getProductByCategory";
 import Sidebar from "../../component/Sidebar/Sidebar";
+import PriceRangeSlider from "../../component/PriceRangeSlider/PriceRangeSlider";
 
 function Home() {
   const [products, setProducts] = useState([]);
@@ -75,7 +76,10 @@ function Home() {
   const [selectedCategory, setselectedCategory] = useState("all");
   const { cart } = useCart();
   const { wishlist } = useWishlist();
-
+  const [priceRange, setpriceRange ] = useState([1, 100000]);
+  console.log("cart", cart);
+  console.log("wishlist", wishlist);
+  console.log("priceRange",priceRange)
   useEffect(() => {
     (async () => {
       const product_data = await getAllProduct();
@@ -93,18 +97,24 @@ function Home() {
     setselectedCategory(category_name);
   };
 
-  const filterProductByCategories = getProductByCategory(
-    products,
-    selectedCategory
+  const filterProduct = getProductByCategory(products, selectedCategory).filter(
+    (product) => {
+      return product.productPrice >= priceRange[0] &&
+        product.productPrice <= priceRange[1];
+    }
   );
-
+  console.log(getProductByCategory(products,selectedCategory))
+  console.log("filter product",filterProduct)
   return (
     <div className="flex">
       <Sidebar
         categories={categories}
         selectedCategory={selectedCategory}
         onCategoryClick={onCategoryClick}
+        priceRange={priceRange}
+        setpriceRange={setpriceRange}
       />
+      
       <div className="flex-1 p-6 md:px-12 lg:px-24">
         <h1 className="text-3xl font-bold text-center mb-6 text-green-700">
           Explore Our Products
@@ -128,8 +138,8 @@ function Home() {
         </div>
 
         <main className="grid gap-6 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
-          {filterProductByCategories?.length > 0 ? (
-            filterProductByCategories.map((product) => (
+          {filterProduct?.length > 0 ? (
+            filterProduct.map((product) => (
               <ProductCard key={product.productId} product={product} />
             ))
           ) : (

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router";
 import { useLogin } from "../../context/login-context";
+import SearchBar from "../../SearchBar/SearchBar";
 
 function Navbar() {
   const navigate = useNavigate();
@@ -21,7 +22,7 @@ function Navbar() {
   }
   return (
     <>
-      <header className="flex sticky top-0 z-50 bg-green-900 py-4 px-8 text-white">
+      <header className="flex sticky top-0 z-50 bg-green-600 py-4 px-8 text-white">
         <div>
           <h1
             className="text-3xl hover:cursor-pointer "
@@ -30,6 +31,10 @@ function Navbar() {
             Shopping Cart
           </h1>
         </div>
+        
+          <SearchBar />
+      
+
         <nav className="ml-auto flex gap-8 ">
           <span
             className="material-icons-outlined hover:cursor-pointer text-3xl"
@@ -53,11 +58,8 @@ function Navbar() {
             {isAccountDropDownOpen && (
               <div className="absolute bg-green-400">
                 <button onClick={onLoginClick}>
-                  {
-                    token?.access_token ? 'LogOut': 'LogIn'
-                  }
-                  
-                  </button>
+                  {token?.access_token ? "LogOut" : "LogIn"}
+                </button>
               </div>
             )}
           </div>

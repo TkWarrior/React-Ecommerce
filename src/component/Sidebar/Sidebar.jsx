@@ -1,8 +1,16 @@
 import React from "react";
+import PriceRangeSlider from "../PriceRangeSlider/PriceRangeSlider";
 
-function Sidebar({ categories, selectedCategory, onCategoryClick }) {
+function Sidebar({
+  categories,
+  selectedCategory,
+  onCategoryClick,
+  priceRange,
+  setpriceRange
+}) {
+
   return (
-    <aside className="hidden lg:block w-64 p-4 border-r border-gray-200 bg-white h-full sticky top-50">
+    <aside className="hidden lg:block w-64 p-4 border-r border-gray-200 bg-white h-full sticky top-30">
       <h2 className="text-xl font-semibold mb-4 text-green-700">Categories</h2>
       <nav className="flex flex-col gap-2">
         {categories?.length > 0 &&
@@ -20,10 +28,10 @@ function Sidebar({ categories, selectedCategory, onCategoryClick }) {
             </button>
           ))}
       </nav>
+      <h2 className="text-xl font-semibold mb-4 text-green-700">Price Range</h2>
+      <PriceRangeSlider priceRange={priceRange} setpriceRange={setpriceRange}/>
     </aside>
   );
 }
 
 export default Sidebar;
-
-
