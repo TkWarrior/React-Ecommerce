@@ -142,7 +142,7 @@ function ProductCard({ product }) {
             {product.productDescription}
           </p>
           <p className="text-lg font-semibold text-green-700">
-            Price: ${product.productPrice}
+            Price: Rs. {product.productPrice}
           </p>
         </div>
         <div className="flex flex-col gap-3 mt-4">
