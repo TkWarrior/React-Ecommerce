@@ -6,11 +6,12 @@ function CartCard({ product }) {
   const {cartDispatch} = useCart()
   console.log(product)
   const OnClickRemove = (product) => {
+    localStorage.removeItem("cart");
         cartDispatch({
             type:'REMOVE_FROM_CART',
             payload:{id : product.productId}
         })
-        localStorage.removeItem('cart')
+        
   }
   return (
     <div className="max-w-4xl mx-auto my-4 p-4">
@@ -26,7 +27,9 @@ function CartCard({ product }) {
           <h2 className="card-title text-2xl lg:text-3xl font-semibold">
             {product.productName}
           </h2>
-          <p className="text-lg text-gray-700">Price: ${product.productPrice}</p>
+          <p className="text-lg text-gray-700">
+            Price: ₹{product.productPrice}
+          </p>
           <div className="card-actions justify-start mt-4 gap-3">
             <div>
               <button className="btn btn-large  bg-pink-600 text-white hover:bg-pink-700">
@@ -36,8 +39,11 @@ function CartCard({ product }) {
                 Move to Wishlist
               </button>
             </div>
-            <div >
-              <button className="btn bg-red-600 text-white hover:bg-red-700" onClick={() => OnClickRemove(product)}>
+            <div>
+              <button
+                className="btn bg-red-600 text-white hover:bg-red-700"
+                onClick={() => OnClickRemove(product)}
+              >
                 <span className="material-icons-outlined text-xl">
                   remove_shopping_cart
                 </span>

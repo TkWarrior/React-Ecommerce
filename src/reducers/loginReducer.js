@@ -1,9 +1,9 @@
 const loginReducer = (state , {type , payload}) =>{
     switch (type) {
-      case "EMAIL":
+      case "USERNAME":
         return {
             ...state,
-            email: payload.value
+            userName: payload.value
         }
       case "PASSWORD":
         return {
@@ -18,7 +18,7 @@ const loginReducer = (state , {type , payload}) =>{
       case "LOGOUT": 
         return{
             ...state,
-            email: '',
+            userName: '',
             password: '',
             token: ''
         }

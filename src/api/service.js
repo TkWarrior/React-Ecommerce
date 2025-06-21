@@ -25,14 +25,16 @@ export const getAllCategories = async () => {
   }
 };
 
-export const userLogin = async (email, password) => {
+export const userLogin = async (userName, password) => {
   try {
     const { data } = await axios.post(BASE_URL + "auth/login", {
-      email: email,
+      userName: userName,
       password: password,
     });
+    console.log(data.fullName)
     return data;
   } catch (error) {
     return error;
   }
 };
+

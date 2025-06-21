@@ -3,17 +3,18 @@ import { Link ,useNavigate} from "react-router-dom";
 import { useLogin } from "../../context/login-context";
 import { userLogin } from "../../api/service";
 function Login() {
-  const { loginDispatch, email, password} = useLogin();
+  const { loginDispatch, userName, password} = useLogin();
   const navigate = useNavigate();
 
   
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const data = await userLogin(email, password);
+    const data = await userLogin(userName, password);
     console.log(data);
     // saving the token on the local storage
     if(Object.keys(data)?.length>0){
-        localStorage.setItem('token',data.access_token)
+        localStorage.setItem('token',data.token)
+        localStorage.setItem('fullName',data.fullName)
     }
     loginDispatch({
       type: "TOKEN",
@@ -21,14 +22,14 @@ function Login() {
       token: data,
       },
     });
-    if(data.access_token){
+    if(data.token){
         navigate('/')
     }
   };
 
-  const onEmailChange = (e) => {
+  const onUserNameChange = (e) => {
     loginDispatch({
-      type: "EMAIL",
+      type: "USERNAME",
       payload: {
       value: e.target.value,
       },
@@ -53,14 +54,14 @@ function Login() {
 
         <div className="space-y-2">
           <label className="block text-sm font-medium text-gray-700">
-            Email
+            Username
           </label>
           <input
             type="email"
             required
             placeholder="Enter Username"
             className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
-            onChange={onEmailChange}
+            onChange={onUserNameChange}
           />
         </div>
 
@@ -70,6 +71,7 @@ function Login() {
           </label>
           <input
             type="password"
+            required
             placeholder="Enter Password"
             className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
             onChange={onPasswordChange}
