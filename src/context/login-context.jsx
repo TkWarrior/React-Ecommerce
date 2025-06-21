@@ -5,14 +5,14 @@ const LoginContext = createContext();
 
 const LoginProvider = ({ children }) => {
   const initialState = {
-     email : '',
+     userName : '',
      password: '',
-     token  : {access_token:localStorage.getItem('token')||'' , refresh_token:''}
+     token  : {token:localStorage.getItem('token')||'' }
   };
   
-  const [{email , password ,token}, loginDispatch] = useReducer(loginReducer, initialState);
+  const [{userName , password ,token}, loginDispatch] = useReducer(loginReducer, initialState);
   return (
-    <LoginContext.Provider value={{ email,password,token, loginDispatch }}>
+    <LoginContext.Provider value={{ userName,password,token, loginDispatch }}>
       {children}
     </LoginContext.Provider>
   );

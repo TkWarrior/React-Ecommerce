@@ -4,12 +4,12 @@
 // import {useNavigate} from "react-router"
 // import { useWishlist } from "../../context/wishlist-contex";
 // function ProductCard({ product }) {
-  
+
 //   const { cart,cartDispatch } = useCart();
 //   const { wishlist,wishDispatch} = useWishlist();
 //   const navigate = useNavigate();
 //   const isProductAvailableInCart = findProductInCart(cart,product.id);
-  
+
 //   const isProductAvailableInWishlist = findProductInWishlist(wishlist,product.id)
 //   const onClickCart = (product) =>{
 
@@ -20,13 +20,13 @@
 //           payload: { product },
 //         })
 //      }else{
-//         navigate("/cart"); 
+//         navigate("/cart");
 //      }
- 
+
 //   }
-  
+
 //   const onClickHeart = (product) => {
-     
+
 //     if(!isProductAvailableInWishlist){
 //       wishDispatch ({
 //            type: "ADD_TO_WISHLIST",
@@ -37,7 +37,7 @@
 //         navigate("/wishlist");
 //     }
 //   }
-   
+
 //   return (
 //     <div>
 //       <div className="card bg-base-100 w-96 shadow-lg m-auto ">
@@ -94,10 +94,10 @@ function ProductCard({ product }) {
   const { wishlist, wishDispatch } = useWishlist();
   const navigate = useNavigate();
 
-  const isProductAvailableInCart = findProductInCart(cart, product.id);
+  const isProductAvailableInCart = findProductInCart(cart, product.productId);
   const isProductAvailableInWishlist = findProductInWishlist(
     wishlist,
-    product.id
+    product.productId
   );
 
   const onClickCart = (product) => {
@@ -107,6 +107,7 @@ function ProductCard({ product }) {
         type: "ADD_TO_CART",
         payload: { product },
       });
+      
     } else {
       navigate("/cart");
     }
@@ -114,11 +115,11 @@ function ProductCard({ product }) {
 
   const onClickHeart = (product) => {
     if (!isProductAvailableInWishlist) {
+      localStorage.setItem("wishlist", JSON.stringify([...wishlist, product]));
       wishDispatch({
         type: "ADD_TO_WISHLIST",
         payload: { product },
       });
-      localStorage.setItem("wishlist", JSON.stringify([...wishlist, product]));
     } else {
       navigate("/wishlist");
     }
@@ -142,7 +143,7 @@ function ProductCard({ product }) {
             {product.productDescription}
           </p>
           <p className="text-lg font-semibold text-green-700">
-            Price: Rs. {product.productPrice}
+            Price: ₹. {product.productPrice}
           </p>
         </div>
         <div className="flex flex-col gap-3 mt-4">
