@@ -31,10 +31,23 @@ export const userLogin = async (userName, password) => {
       userName: userName,
       password: password,
     });
-    console.log(data.fullName)
     return data;
   } catch (error) {
     return error;
   }
 };
 
+export const userRegister = async (fullName , userName , password) => {
+  try {
+    const {data} = await axios.post(BASE_URL + "auth/signup",{
+      fullName: fullName,
+      userName : userName,
+      password : password,
+    });
+    
+    return data
+  } catch (error) {
+      console.log(error)
+      return error;
+  }
+}
