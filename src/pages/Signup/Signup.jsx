@@ -71,10 +71,7 @@ function Signup() {
         </button>
 
         <p className="text-center text-sm text-gray-600">
-          {/* Don't have an account?{" "}
-            <a href="#" className="text-blue-600 hover:underline">
-              Sign up
-            </a> */}
+          
           Already have an account?
           <Link to="/signup" className="text-blue-600">
             Log In
