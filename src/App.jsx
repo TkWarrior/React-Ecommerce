@@ -11,8 +11,9 @@ import { LoginProvider } from './context/login-context'
 import UserDashboard from './pages/Dashboard/UserDashboard'
 import Checkout from './pages/Checkout/Checkout'
 import Signup from './pages/Signup/Signup'
-
-
+import Success from './pages/Checkout/Success'
+import Cancel from './pages/Checkout/Cancel'
+import { SearchProvider } from './context/search-context'
 function App() {
 
   return (
@@ -21,16 +22,21 @@ function App() {
         <CartProvider>
           <BrowserRouter>
             <LoginProvider>
-              <Navbar />
-              <Routes>
-                <Route path="/" element={<Home />}></Route>
-                <Route path="/cart" element={<Cart />}></Route>
-                <Route path="/wishlist" element={<Wishlist />}></Route>
-                <Route path="/auth/login" element={<Login />}></Route>
-                <Route path="/Dashboard" element={<UserDashboard/>}></Route>
-                <Route path="/checkout" element={<Checkout/>}></Route> 
-                <Route path="/signup" element={<Signup/>}></Route>
-              </Routes>
+              <SearchProvider>
+                <Navbar />
+
+                <Routes>
+                  <Route path="/" element={<Home />}></Route>
+                  <Route path="/cart" element={<Cart />}></Route>
+                  <Route path="/wishlist" element={<Wishlist />}></Route>
+                  <Route path="/auth/login" element={<Login />}></Route>
+                  <Route path="/Dashboard" element={<UserDashboard />}></Route>
+                  <Route path="/checkout" element={<Checkout />}></Route>
+                  <Route path="/signup" element={<Signup />}></Route>
+                  <Route path="/success" element={<Success />}></Route>
+                  <Route path="/cancel" element={<Cancel />}></Route>
+                </Routes>
+              </SearchProvider>
             </LoginProvider>
           </BrowserRouter>
         </CartProvider>

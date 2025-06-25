@@ -15,6 +15,7 @@ function Signup() {
         else{
             const response = await userRegister(fullName, userName, password);
             console.log(response);
+            alert("User Registered Successfully")
             navigate("/auth/login");
         }
         

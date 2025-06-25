@@ -4,7 +4,7 @@ import { useCart } from "../../context/cart-context";
 function CartCard({ product }) {
   
   const {cartDispatch} = useCart()
-  console.log(product)
+  // console.log(product)
   const OnClickRemove = (product) => {
     localStorage.removeItem("cart");
         cartDispatch({
