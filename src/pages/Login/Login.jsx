@@ -10,10 +10,10 @@ function Login() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const data = await userLogin(userName, password);
-    console.log(data);
+    
     // saving the token on the local storage
     if(Object.keys(data)?.length>0){
-        localStorage.setItem('token',data.token)
+        localStorage.setItem('token',data)
         localStorage.setItem('fullName',data.fullName)
     }
     loginDispatch({

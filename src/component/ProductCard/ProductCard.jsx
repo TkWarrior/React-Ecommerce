@@ -126,40 +126,36 @@ function ProductCard({ product }) {
   };
 
   return (
-    <div className="w-full max-w-sm bg-white rounded-2xl shadow-md hover:shadow-lg transition duration-300 m-auto">
-      <figure>
+    <div className="w-full bg-white rounded-2xl shadow-md">
+      <figure className="justify-center">
         <img
           src={product.img_url}
           alt="product"
-          className="w-full h-60 object-cover rounded-t-2xl"
+          className=" h-40 object-cover rounded-md ml-10"
         />
       </figure>
-      <div className="p-5 flex flex-col justify-between h-full">
+      <div className="p-5 flex flex-col  h-full">
         <div>
-          <h2 className="text-xl font-bold text-gray-800 mb-1">
+          <p className="text-lg font-extralight text-gray-800 mb-1 ">
             {product.productName}
-          </h2>
-          <p className="text-sm text-gray-600 mb-2">
-            {product.productDescription}
           </p>
+          
           <p className="text-lg font-semibold text-green-700">
             Price: ₹. {product.productPrice}
           </p>
         </div>
-        <div className="flex flex-col gap-3 mt-4">
+        <div className="grid sm:grid-cols-2 gap-2 mt-2">
           <button
-            className="flex items-center justify-center gap-2 px-4 py-2 rounded-lg bg-red-500 text-white hover:bg-red-700 transition"
+            className="bg-red-500 hover:bg-red-700 transition rounded-3xl text-white"
             onClick={() => onClickHeart(product)}
           >
             <span className="material-icons-outlined text-xl">
               {isProductAvailableInWishlist ? "output" : "favorite"}
             </span>
-            {isProductAvailableInWishlist
-              ? "Go to Wishlist"
-              : "Add to Wishlist"}
+            
           </button>
           <button
-            className="flex items-center justify-center gap-2 px-4 py-2 rounded-lg bg-green-700 text-white hover:bg-green-800 transition"
+            className="bg-teal-500 hover:bg-teal-700 transition rounded-3xl text-white"
             onClick={() => onClickCart(product)}
           >
             <span className="material-icons-outlined text-xl">
@@ -167,7 +163,7 @@ function ProductCard({ product }) {
                 ? "shopping_cart_checkout"
                 : "add_shopping_cart"}
             </span>
-            {isProductAvailableInCart ? "Go to Cart" : "Add to Cart"}
+           
           </button>
         </div>
       </div>
