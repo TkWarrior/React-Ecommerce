@@ -14,17 +14,17 @@ function Navbar() {
   const { wishlist } = useWishlist();
   const onLoginClick = () => {
     if (token?.token) {
-      navigate("/auth/login");
+      navigate("/auth/login");   
       loginDispatch({ type: "LOGOUT" });
     } else {
-      localStorage.setItem("token", token);
-      loginDispatch({ type: "TOKEN" });
+      // loginDispatch({ type: "TOKEN" }); 
+       console.log(token);
       navigate("/auth/login");
     }
   };
 
   return (
-    <header className="sticky top-0 z-50 bg-teal-600 text-white shadow-md">
+    <header className="lg:sticky top-0 z-50 bg-teal-600 text-white shadow-md sm:w-full">
       <div className="max-w-7xl mx-auto px-4 py-3 flex flex-wrap items-center justify-between">
         {/* Logo */}
         <h1
@@ -48,9 +48,7 @@ function Navbar() {
             className="releative cursor-pointer justify-center"
             onClick={() => navigate("/wishlist")}
           >
-            <span className="material-icons-outlined text-3xl">
-              favorite
-            </span>
+            <span className="material-icons-outlined text-3xl">favorite</span>
             {
               <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs font-bold px-1.5 py-0.5 rounded-full">
                 {wishlist.length}
@@ -157,5 +155,4 @@ function Navbar() {
     </header>
   );
 }
-
 export default Navbar;

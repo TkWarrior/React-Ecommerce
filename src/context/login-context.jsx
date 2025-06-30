@@ -4,10 +4,11 @@ import loginReducer from "../reducers/loginReducer";
 const LoginContext = createContext();
 
 const LoginProvider = ({ children }) => {
+
   const initialState = {
-     userName : '',
-     password: '',
-     token  : {token:localStorage.getItem('token')||'' }
+    userName: "",
+    password: "",
+    token: {token:localStorage.getItem("token") || ""} ,
   };
   
   const [{userName , password ,token}, loginDispatch] = useReducer(loginReducer, initialState);

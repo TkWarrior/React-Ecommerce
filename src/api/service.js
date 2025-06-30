@@ -31,6 +31,7 @@ export const userLogin = async (userName, password) => {
       userName: userName,
       password: password,
     });
+    console.log(data.token)
     return data;
   } catch (error) {
     return error;

@@ -3,23 +3,22 @@ import { Link ,useNavigate} from "react-router-dom";
 import { useLogin } from "../../context/login-context";
 import { userLogin } from "../../api/service";
 function Login() {
-  const { loginDispatch, userName, password} = useLogin();
+  
+  const { loginDispatch, userName, password } = useLogin();
   const navigate = useNavigate();
 
-  
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const data = await userLogin(userName, password);
+    const data = await userLogin(userName, password );
     
     // saving the token on the local storage
     if(Object.keys(data)?.length>0){
         localStorage.setItem('token',data)
-        localStorage.setItem('fullName',data.fullName)
     }
     loginDispatch({
       type: "TOKEN",
       payload: {
-      token: data,
+      token: data ,
       },
     });
     if(data.token){

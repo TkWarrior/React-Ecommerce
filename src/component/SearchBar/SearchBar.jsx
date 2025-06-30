@@ -9,7 +9,7 @@ function SearchBar() {
   }
   
   return (
-    <div className="ml-10 w-full max-w-md relative flex">
+    <div className="sm:ml-10 w-full max-w-md relative flex">
       <input
         type="search"
         placeholder="Search products..."
