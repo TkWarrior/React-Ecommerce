@@ -127,19 +127,20 @@ function ProductCard({ product }) {
 
   return (
     <div className="w-full bg-white rounded-2xl shadow-md">
-      <figure className="justify-center">
+      <div>
         <img
           src={product.img_url}
           alt="product"
-          className=" h-40 object-cover rounded-md ml-10"
+          className=" h-40 object-cover rounded-md m-auto"
         />
-      </figure>
-      <div className="p-5 flex flex-col  h-full">
+      </div>
+
+      <div className="p-5 flex flex-col h-full">
         <div>
-          <p className="text-lg font-extralight text-gray-800 mb-1 ">
+          <p className="text-lg text-pretty font-extralight text-gray-800 mb-1 ">
             {product.productName}
           </p>
-          
+
           <p className="text-lg font-semibold text-green-700">
             Price: ₹. {product.productPrice}
           </p>
@@ -152,7 +153,6 @@ function ProductCard({ product }) {
             <span className="material-icons-outlined text-xl">
               {isProductAvailableInWishlist ? "output" : "favorite"}
             </span>
-            
           </button>
           <button
             className="bg-teal-500 hover:bg-teal-700 transition rounded-3xl text-white"
@@ -163,7 +163,6 @@ function ProductCard({ product }) {
                 ? "shopping_cart_checkout"
                 : "add_shopping_cart"}
             </span>
-           
           </button>
         </div>
       </div>

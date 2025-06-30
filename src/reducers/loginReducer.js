@@ -20,7 +20,7 @@ const loginReducer = (state , {type , payload}) =>{
             ...state,
             userName: '',
             password: '',
-            token: ''
+            token: localStorage.removeItem("token")
         }
       default:
             return state

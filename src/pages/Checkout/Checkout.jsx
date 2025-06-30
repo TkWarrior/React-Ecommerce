@@ -44,6 +44,7 @@ import CheckOutForm from "../../component/CheckOutForm/CheckOutForm";
 import axios from "axios"
 
 import { getTotalCartAmount } from "../../utils/getTotalCartAmount";
+import { useLogin } from "../../context/login-context";
 function Checkout() {
   const { cart } = useCart();
   
@@ -61,8 +62,7 @@ function Checkout() {
       "http://localhost:8080/api/checkout/create-session",
       checkoutItem
     );
-    
-    console.log(response.data)
+    window.location.href = response.data;
   };
 
   return (

@@ -58,15 +58,17 @@ function Home() {
   
   return (
     <div className="flex">
-      <Sidebar
-        categories={categories}
-        selectedCategory={selectedCategory}
-        onCategoryClick={onCategoryClick}
-        priceRange={priceRange}
-        setpriceRange={setpriceRange}
-      />
+      
+        <Sidebar
+          categories={categories}
+          selectedCategory={selectedCategory}
+          onCategoryClick={onCategoryClick}
+          priceRange={priceRange}
+          setpriceRange={setpriceRange}
+        />
+     
 
-      <div className="flex-1 p-6 md:px-12 lg:px-24">
+      <div className="flex-1 p-6 md:px-12 lg:px-10">
         <h1 className="text-3xl font-bold text-center mb-6 text-green-700">
           Explore Our Products
         </h1>
